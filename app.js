@@ -6,6 +6,7 @@ const request = require("request");
 const https = require("https");
 
 const app = express();
+require('dotenv').config()
 
 app.use(express.static("public"));         // all the static folder will be shon on our browser
 app.use(bodyParser.urlencoded({extended: true}));
@@ -37,7 +38,7 @@ app.post("/", function(req, res){
   const url = "https://us21.api.mailchimp.com/3.0/lists/cf9422cd8e"
   const options = {
     method: "POST",
-    auth: "abhinav:d1b03f33ee3083480e42c0d765e6e954-us21"
+    auth: "abhinav:"+process.env.thirdAPIkey
   }
 
   const request = https.request(url, options, function(response){
