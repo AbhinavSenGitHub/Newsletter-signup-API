@@ -37,10 +37,11 @@ app.post("/", function(req, res){
   const url = "https://us21.api.mailchimp.com/3.0/lists/cf9422cd8e"
   const options = {
     method: "POST",
-    auth: "abhinav:eec45e6583d3436a2c5eb71ea183768f-us21"
+    auth: "abhinav:d1b03f33ee3083480e42c0d765e6e954-us21"
   }
 
   const request = https.request(url, options, function(response){
+    // console.log(response.statusCode);
     if(response.statusCode === 200){
       res.sendFile(__dirname + "/success.html");
     }else{
@@ -48,7 +49,7 @@ app.post("/", function(req, res){
     }
 
     response.on("data", function(data){
-      console.log(JSON.parse(data));
+      console.log(JSON.parse(data))
     })
   })
   request.write(jsonData);
@@ -64,6 +65,9 @@ app.listen(process.env.PORT || 3000, function(){
 })
 // API key
 // eec45e6583d3436a2c5eb71ea183768f-us21
+
+// API SECOND
+// d1b03f33ee3083480e42c0d765e6e954-us21
 
 // audience id
 // cf9422cd8e.
